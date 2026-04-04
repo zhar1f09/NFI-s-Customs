@@ -148,20 +148,21 @@ section p.subtitle {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 35px;
     margin-top: 40px;
+    justify-content: center;
 }
 
 .term-box {
-    background: linear-gradient(135deg, #E74C3C, #922B21);
-    padding: 30px;
+    background: rgba(255,255,255,0.05);
+    padding: 35px;
     border-radius: 18px;
-    border: 1px solid rgba(255,255,255,0.15);
-    box-shadow: 0 8px 25px rgba(231,76,60,0.25);
+    border: 1px solid rgba(255,255,255,0.1);
     transition: 0.3s;
     text-align: left;
 }
 
 .term-box:hover {
     transform: translateY(-6px);
+    background: rgba(255,255,255,0.08);
 }
 
 .term-box h3 {
@@ -187,66 +188,80 @@ footer {
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-    <div class="logo"><img src="logo.png" alt="Nocturne Designs"></div>
+    <div class="logo">
+        <a href="index.html">
+            <img src="NFI.webp" alt="Nocturne Designs Logo">
+        </a>
+    </div>
+
     <ul>
         <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
         <li><a href="terms.html">Terms</a></li>
-        <li><a href="support.html">Support</a></li>
+        <li><a href="https://discord.gg/GHYsrwvaN7" target="_blank">Discord</a></li>
     </ul>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
-    <img src="banner.jpg" alt="Terms Banner">
-    <div class="hero-content">
+    <img src="official_banner.webp" alt="Hero Background">
+    <div class="hero-content fade-up">
         <h1>Order Regulations</h1>
         <p>Review and comply with all terms before placing an order.</p>
     </div>
 </div>
 
-<section>
-    <h2>Illustrate Designs – Terms of Service</h2>
+<!-- TERMS -->
+<section class="fade-up">
+    <h2>Nocturne Designs – Terms of Service</h2>
     <p class="subtitle">Failure to adhere to these rules may result in being blacklisted from ordering services.</p>
 
     <div class="terms-grid">
         <div class="term-box">
             <h3>Payments & Assets</h3>
-            <p>A 50% payment is required before work begins and before receiving the final, unwatermarked product. PSD/PDN files are not provided.</p>
+            <p>Clients must pay either 50/50 or fully upfront depending on the designer’s requirements. Final products are delivered unwatermarked only after full payment. PSD/PDN files are not provided.</p>
+        </div>
+
+        <div class="term-box">
+            <h3>Details</h3>
+            <p>You are required to provide all necessary information crucial to the designer’s preference for your order. Missing details may delay production.</p>
+        </div>
+
+        <div class="term-box">
+            <h3>Designer Pinging</h3>
+            <p>Consistently pinging a designer to rush your order will result in immediate ticket closure. Refunds will not be issued in such cases.</p>
         </div>
 
         <div class="term-box">
             <h3>Requesting Designers</h3>
-            <p>You may request a specific designer, but arrangements must be made before the order starts.</p>
+            <p>You may request a specific designer, but arrangements must be made before the order begins.</p>
         </div>
 
         <div class="term-box">
             <h3>Reselling</h3>
-            <p>Reselling our products or assets is strictly prohibited. Violations will result in moderation.</p>
+            <p>Reselling our products is only permitted if the designer explicitly allows it. In such cases, proper credit must be given to both the designer and Nocturne Designs.</p>
         </div>
 
         <div class="term-box">
             <h3>Refunds</h3>
-            <p>No refunds or compensation are offered after payment unless an issue is caused by our end.</p>
+            <p>Refunds are not offered after payment unless an issue or mistake is caused by our end. Credits may be issued if approved by HR.</p>
         </div>
 
         <div class="term-box">
             <h3>Lost Products</h3>
-            <p>We are not responsible for lost products. Clients must store their delivered assets safely.</p>
+            <p>We are not responsible for lost products. Once delivered, clients must store their assets safely.</p>
         </div>
 
         <div class="term-box">
             <h3>Changing Orders</h3>
-            <p>No changes are allowed after completion. Minor adjustments may be requested during development.</p>
+            <p>No changes are allowed after completion. Minor adjustments may be requested during development only.</p>
         </div>
 
         <div class="term-box">
             <h3>Gamepass Purchases</h3>
-            <p>Only purchase gamepasses from individuals with the @Payment Helper role. We are not responsible for scams outside the official Purchase Hub.</p>
-        </div>
-
-        <div class="term-box">
-            <h3>Custom Bots</h3>
-            <p>Bots may be deactivated at any time. Services must comply with Discord and Roblox TOS. Hosting is provided via GalaxyGate; inactive servers may have bots deactivated.</p>
+            <p>Only purchase gamepasses from individuals with the @Payment Helper role. We are not responsible for scams outside the official Nocturne Designs Purchase Hub.</p>
         </div>
     </div>
 </section>

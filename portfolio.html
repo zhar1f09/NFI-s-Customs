@@ -21,7 +21,6 @@ body {
     overflow-x: hidden;
 }
 
-/* NAVIGATION */
 nav {
     display: flex;
     justify-content: space-between;
@@ -64,7 +63,6 @@ nav a::after {
 }
 nav a:hover::after { width: 100%; }
 
-/* HERO (matching home) */
 .hero-portfolio {
     position: relative;
     height: 400px;
@@ -106,7 +104,6 @@ nav a:hover::after { width: 100%; }
     opacity: 0.9;
 }
 
-/* FILTER BAR + ADMIN BUTTONS */
 .filter-bar {
     display: flex;
     flex-wrap: wrap;
@@ -150,7 +147,6 @@ nav a:hover::after { width: 100%; }
     background: #E74C3C;
 }
 
-/* PROJECTS GRID */
 .projects-grid {
     max-width: 1400px;
     margin: 0 auto;
@@ -198,7 +194,14 @@ nav a:hover::after { width: 100%; }
     opacity: 0.8;
     font-size: 0.9rem;
     line-height: 1.5;
+    margin-bottom: 0.75rem;
+}
+.project-madeby {
+    font-size: 0.8rem;
+    color: #E74C3C;
     margin-bottom: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
 }
 .service-link {
     display: inline-flex;
@@ -211,7 +214,6 @@ nav a:hover::after { width: 100%; }
 }
 .service-link:hover { gap: 10px; color: #ff7a5c; }
 
-/* MODAL STYLES */
 .modal {
     display: none;
     position: fixed;
@@ -315,6 +317,7 @@ footer {
         <input type="text" id="projectImgUrl" placeholder="Discord image URL (direct link)" value="">
         <input type="text" id="projectTitle" placeholder="Project title">
         <textarea id="projectDesc" placeholder="Short description"></textarea>
+        <input type="text" id="projectMadeBy" placeholder="Made by (e.g., NFI, Alex, Studio Name)" value="Nocturne Designs">
         <input type="text" id="projectCategory" placeholder="Category (e.g., Scripting, GFX)" list="categorySuggestions">
         <datalist id="categorySuggestions">
             <option>Scripting</option><option>Discord Services</option><option>Graphics & GFX</option>
@@ -328,52 +331,50 @@ footer {
 </div>
 
 <script>
-    // ---------- DEFAULT PORTFOLIO DATA (same as before) ----------
+    // DEFAULT PORTFOLIO DATA (with "madeBy" field)
     const DEFAULT_CATEGORIES = {
         "Scripting": {
             works: [
-                { img: "https://picsum.photos/id/26/500/350", title: "Admin Control Panel", desc: "Full moderation suite with logs" },
-                { img: "https://picsum.photos/id/106/500/350", title: "Economy Simulator", desc: "Trading & banking core" },
-                { img: "https://picsum.photos/id/0/500/350", title: "Anti-Cheat Core", desc: "Real-time protection AI" }
+                { img: "https://picsum.photos/id/26/500/350", title: "Admin Control Panel", desc: "Full moderation suite with logs", madeBy: "Nocturne Designs" },
+                { img: "https://picsum.photos/id/106/500/350", title: "Economy Simulator", desc: "Trading & banking core", madeBy: "NFI" },
+                { img: "https://picsum.photos/id/0/500/350", title: "Anti-Cheat Core", desc: "Real-time protection AI", madeBy: "Alex" }
             ]
         },
         "Discord Services": {
             works: [
-                { img: "https://picsum.photos/id/96/500/350", title: "Moderation Dashboard", desc: "Logs & warnings" },
-                { img: "https://picsum.photos/id/219/500/350", title: "Ticket System Pro", desc: "Support tickets" },
-                { img: "https://picsum.photos/id/169/500/350", title: "Giveaway Manager", desc: "Auto‑giveaways" }
+                { img: "https://picsum.photos/id/96/500/350", title: "Moderation Dashboard", desc: "Logs & warnings", madeBy: "Nocturne Designs" },
+                { img: "https://picsum.photos/id/219/500/350", title: "Ticket System Pro", desc: "Support tickets", madeBy: "NFI" },
+                { img: "https://picsum.photos/id/169/500/350", title: "Giveaway Manager", desc: "Auto‑giveaways", madeBy: "Community Team" }
             ]
         },
         "Graphics & GFX": {
             works: [
-                { img: "https://picsum.photos/id/104/500/350", title: "Neon Kingdom", desc: "Logo & identity pack" },
-                { img: "https://picsum.photos/id/21/500/350", title: "YT Thumbnail Pack", desc: "High CTR designs" }
+                { img: "https://picsum.photos/id/104/500/350", title: "Neon Kingdom", desc: "Logo & identity pack", madeBy: "Nocturne Designs" },
+                { img: "https://picsum.photos/id/21/500/350", title: "YT Thumbnail Pack", desc: "High CTR designs", madeBy: "GFX Studio" }
             ]
         },
         "User Interface (UI)": {
             works: [
-                { img: "https://picsum.photos/id/91/500/350", title: "Cyberpunk HUD", desc: "Futuristic UI" },
-                { img: "https://picsum.photos/id/77/500/350", title: "Inventory System", desc: "Drag & drop" }
+                { img: "https://picsum.photos/id/91/500/350", title: "Cyberpunk HUD", desc: "Futuristic UI", madeBy: "Nocturne Designs" },
+                { img: "https://picsum.photos/id/77/500/350", title: "Inventory System", desc: "Drag & drop", madeBy: "UI Master" }
             ]
         },
         "Clothing": {
             works: [
-                { img: "https://picsum.photos/id/82/500/350", title: "Urban Streetwear", desc: "T-shirt design" },
-                { img: "https://picsum.photos/id/145/500/350", title: "Fantasy Hoodie", desc: "Embroidered look" }
+                { img: "https://picsum.photos/id/82/500/350", title: "Urban Streetwear", desc: "T-shirt design", madeBy: "Fashion Lab" },
+                { img: "https://picsum.photos/id/145/500/350", title: "Fantasy Hoodie", desc: "Embroidered look", madeBy: "Nocturne Designs" }
             ]
         },
         "Modeling & Building": {
             works: [
-                { img: "https://picsum.photos/id/11/500/350", title: "Gothic Mansion", desc: "Interior & exterior" },
-                { img: "https://picsum.photos/id/33/500/350", title: "Neon City Plaza", desc: "Urban modular" }
+                { img: "https://picsum.photos/id/11/500/350", title: "Gothic Mansion", desc: "Interior & exterior", madeBy: "Build Team" },
+                { img: "https://picsum.photos/id/33/500/350", title: "Neon City Plaza", desc: "Urban modular", madeBy: "Nocturne Designs" }
             ]
         }
     };
 
-    // Storage key
     const STORAGE_KEY = "nocturne_portfolio_data";
 
-    // Load or initialize portfolio data
     function loadPortfolioData() {
         const stored = localStorage.getItem(STORAGE_KEY);
         if (stored) {
@@ -381,7 +382,6 @@ footer {
                 return JSON.parse(stored);
             } catch(e) { console.warn(e); }
         }
-        // deep copy default
         return JSON.parse(JSON.stringify(DEFAULT_CATEGORIES));
     }
 
@@ -393,7 +393,7 @@ footer {
         allProjects = [];
         for (let cat in portfolioDB) {
             portfolioDB[cat].works.forEach(w => {
-                allProjects.push({ ...w, category: cat });
+                allProjects.push({ ...w, category: cat, madeBy: w.madeBy || "Anonymous" });
             });
         }
     }
@@ -402,7 +402,6 @@ footer {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(portfolioDB));
     }
 
-    // Render projects based on currentFilter
     function renderProjects() {
         const grid = document.getElementById('projectsGrid');
         const filtered = currentFilter === "all" ? allProjects : allProjects.filter(p => p.category === currentFilter);
@@ -420,6 +419,7 @@ footer {
                     <span class="project-cat">${escapeHtml(proj.category)}</span>
                     <div class="project-title">${escapeHtml(proj.title)}</div>
                     <div class="project-desc">${escapeHtml(proj.desc)}</div>
+                    <div class="project-madeby">🎨 Made by: ${escapeHtml(proj.madeBy)}</div>
                     <a href="services.html" class="service-link">↗ related service · ${escapeHtml(proj.category)}</a>
                 </div>
             `;
@@ -427,7 +427,15 @@ footer {
         });
     }
 
-    function escapeHtml(str) { return str.replace(/[&<>]/g, function(m){if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+    function escapeHtml(str) { 
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m){
+            if(m==='&') return '&amp;';
+            if(m==='<') return '&lt;';
+            if(m==='>') return '&gt;';
+            return m;
+        });
+    }
 
     function buildFilters() {
         const bar = document.getElementById('filterBar');
@@ -442,7 +450,7 @@ footer {
                 currentFilter = cat;
                 rebuildAllProjects();
                 renderProjects();
-                buildFilters(); // refresh active state
+                buildFilters();
             });
             bar.appendChild(btn);
         });
@@ -457,7 +465,6 @@ footer {
         }
     }
 
-    // Reset to default (clear localStorage and reload)
     function resetToDefault() {
         if (confirm("⚠️ This will delete all your added projects and restore the default portfolio. Continue?")) {
             localStorage.removeItem(STORAGE_KEY);
@@ -469,18 +476,17 @@ footer {
         }
     }
 
-    // Add new project using Discord image URL
-    function addNewProject(imgUrl, title, desc, category) {
+    function addNewProject(imgUrl, title, desc, madeBy, category) {
         if (!imgUrl || !title || !desc || !category) {
             alert("Please fill all fields (image URL, title, description, category).");
             return false;
         }
-        // simple URL validation
         if (!imgUrl.startsWith("http")) {
             alert("Image URL must start with http:// or https:// (Discord CDN works perfectly).");
             return false;
         }
-        const newWork = { img: imgUrl, title: title, desc: desc };
+        const creator = madeBy && madeBy.trim() ? madeBy.trim() : "Anonymous";
+        const newWork = { img: imgUrl, title: title, desc: desc, madeBy: creator };
         if (!portfolioDB[category]) {
             portfolioDB[category] = { works: [] };
         }
@@ -490,7 +496,7 @@ footer {
         if (currentFilter === "all" || currentFilter === category) {
             renderProjects();
         }
-        buildFilters(); // update filter bar with new category
+        buildFilters();
         return true;
     }
 
@@ -510,18 +516,19 @@ footer {
         const imgUrl = document.getElementById('projectImgUrl').value.trim();
         const title = document.getElementById('projectTitle').value.trim();
         const desc = document.getElementById('projectDesc').value.trim();
+        const madeBy = document.getElementById('projectMadeBy').value.trim();
         let category = document.getElementById('projectCategory').value.trim();
         if (!category) category = "Other";
-        if (addNewProject(imgUrl, title, desc, category)) {
+        if (addNewProject(imgUrl, title, desc, madeBy, category)) {
             modal.style.display = 'none';
             document.getElementById('projectImgUrl').value = '';
             document.getElementById('projectTitle').value = '';
             document.getElementById('projectDesc').value = '';
+            document.getElementById('projectMadeBy').value = 'Nocturne Designs';
             document.getElementById('projectCategory').value = '';
         }
     };
 
-    // Initial load
     rebuildAllProjects();
     renderProjects();
     buildFilters();

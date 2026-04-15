@@ -3,164 +3,329 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio · Past work | NFI's Custom</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<title>Portfolio · Past Work | Nocturne Designs</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { background:#0a0a0a; color:#f0f0f0; font-family:'Inter',sans-serif; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: #0a0a0a;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* NAVIGATION (same as home) */
 nav {
-  display:flex; justify-content:space-between; align-items:center;
-  padding:18px 60px; background:rgba(0,0,0,0.65); backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(255,255,255,0.1); position:sticky; top:0; z-index:200;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 60px;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
-.logo img { height:52px; transition:0.2s; }
-.logo img:hover { transform:scale(1.05); }
-nav ul { list-style:none; display:flex; gap:2rem; }
-nav a { text-decoration:none; color:rgba(255,255,255,0.85); font-weight:500; transition:0.2s; position:relative; }
-nav a:hover, nav a.active { color:#E74C3C; }
-nav a::after { content:''; position:absolute; bottom:-6px; left:0; width:0; height:2px; background:#E74C3C; transition:0.25s; }
-nav a:hover::after, nav a.active::after { width:100%; }
-.hero {
-  height:300px; background:linear-gradient(125deg,#2c0f0a,#0a0a0a), url("official_banner.webp") center/cover no-repeat;
-  background-blend-mode:overlay; display:flex; align-items:center; justify-content:center; text-align:center;
+
+.logo img {
+    height: 50px;
+    transition: 0.3s ease;
 }
-.hero h1 { font-size:3.2rem; font-weight:800; background:linear-gradient(135deg,#fff,#ffa090); background-clip:text; -webkit-background-clip:text; color:transparent; }
-.container { max-width:1400px; margin:0 auto; padding:50px 40px; }
-.filter-bar { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-bottom:3rem; }
+.logo img:hover { transform: scale(1.08); }
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+    transition: 0.3s;
+    position: relative;
+}
+nav a:hover { color: #E74C3C; }
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: #E74C3C;
+    transition: 0.3s;
+}
+nav a:hover::after { width: 100%; }
+
+/* HERO (smaller variant) */
+.hero-portfolio {
+    position: relative;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(231,76,60,0.7), rgba(146,43,33,0.7)), url("official_banner.webp") center/cover no-repeat;
+}
+.hero-portfolio h1 {
+    font-size: 48px;
+    font-weight: 800;
+    text-shadow: 2px 2px 12px rgba(0,0,0,0.5);
+}
+.hero-portfolio p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-top: 10px;
+}
+
+/* FILTER BAR */
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 50px auto 40px;
+    max-width: 1200px;
+    padding: 0 20px;
+}
 .filter-btn {
-  background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15);
-  padding:10px 24px; border-radius:60px; color:white; font-weight:600; cursor:pointer; transition:0.2s;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 10px 24px;
+    border-radius: 40px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
 }
-.filter-btn.active, .filter-btn:hover { background:#E74C3C; border-color:#E74C3C; }
-.projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:2rem; }
+.filter-btn.active, .filter-btn:hover {
+    background: #E74C3C;
+    border-color: #E74C3C;
+}
+
+/* PROJECTS GRID */
+.projects-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 35px;
+}
 .project-card {
-  background:rgba(15,15,20,0.8); backdrop-filter:blur(8px); border-radius:28px;
-  overflow:hidden; border:1px solid rgba(255,255,255,0.08); transition:0.2s;
+    background: rgba(255,255,255,0.05);
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: 0.3s;
 }
-.project-card:hover { transform:translateY(-5px); border-color:#E74C3C; }
-.project-img { width:100%; height:200px; object-fit:cover; }
-.project-details { padding:1.4rem; }
-.project-cat { display:inline-block; background:#E74C3C20; color:#ffaa99; padding:4px 12px; border-radius:30px; font-size:0.7rem; font-weight:600; margin-bottom:10px; }
-.project-title { font-size:1.4rem; font-weight:700; margin-bottom:8px; }
-.project-desc { opacity:0.75; font-size:0.9rem; margin-bottom:1rem; }
-.service-link { text-decoration:none; color:#E74C3C; font-weight:600; display:inline-flex; align-items:center; gap:6px; transition:0.2s; }
-.service-link:hover { gap:10px; color:#ff7a5c; }
-footer { text-align:center; padding:2rem; border-top:1px solid rgba(255,255,255,0.05); margin-top:3rem; font-size:0.85rem; }
-@media (max-width:760px) { nav { padding:16px 24px; flex-direction:column; gap:12px; } .container { padding:30px 20px; } .hero h1 { font-size:2rem; } }
+.project-card:hover {
+    transform: translateY(-6px);
+    border-color: #E74C3C;
+    box-shadow: 0 12px 30px rgba(231,76,60,0.2);
+}
+.project-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.project-details {
+    padding: 1.5rem;
+}
+.project-cat {
+    display: inline-block;
+    background: rgba(231,76,60,0.2);
+    color: #ffaa99;
+    padding: 4px 12px;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+.project-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.project-desc {
+    opacity: 0.8;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+.service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #E74C3C;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s;
+}
+.service-link:hover { gap: 10px; color: #ff7a5c; }
+
+/* FOOTER */
+footer {
+    padding: 30px;
+    text-align: center;
+    background: rgba(0,0,0,0.4);
+    font-size: 14px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+@media(max-width:768px) {
+    nav { flex-direction: column; gap: 15px; padding: 20px; }
+    .hero-portfolio h1 { font-size: 32px; }
+    .projects-grid { padding: 0 20px 50px; gap: 20px; }
+    .filter-bar { margin-top: 30px; }
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo"><a href="index.html"><img src="NFI.webp" alt="NFI's Custom"></a></div>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="portfolio.html" class="active">Portfolio</a></li>
-    <li><a href="terms.html">Terms</a></li>
-    <li><a href="https://discord.gg/GHYsrwvaN7" target="_blank">Discord</a></li>
-  </ul>
+    <div class="logo"><a href="index.html"><img src="NFI.webp" alt="NFI Logo"></a></div>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html" style="color:#E74C3C;">Portfolio</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="https://discord.gg/GHYsrwvaN7" target="_blank">Discord</a></li>
+    </ul>
 </nav>
 
-<div class="hero"><h1>✦ past work showcase ✦</h1></div>
-<div class="container">
-  <div class="filter-bar" id="filterBar"></div>
-  <div id="projectsGrid" class="projects-grid"></div>
+<div class="hero-portfolio">
+    <div>
+        <h1>✦ Past Work Showcase ✦</h1>
+        <p>Explore real projects from each service category</p>
+    </div>
 </div>
-<footer>© 2026 NFI's Custom — Every project tells a story.</footer>
+
+<div class="filter-bar" id="filterBar"></div>
+<div id="projectsGrid" class="projects-grid"></div>
+
+<footer>© 2026 NFI's Custom. All rights reserved.</footer>
 
 <script>
-  const portfolioDB = {
-    "Scripting": { works: [
-      { img:"https://picsum.photos/id/26/500/350", title:"Admin Control Panel", desc:"Full moderation suite" },
-      { img:"https://picsum.photos/id/106/500/350", title:"Economy Simulator", desc:"Trading & banking core" },
-      { img:"https://picsum.photos/id/0/500/350", title:"Anti-Cheat Core", desc:"Real-time protection" }
-    ]},
-    "Discord Services": { works: [
-      { img:"https://picsum.photos/id/96/500/350", title:"Moderation Dashboard", desc:"Logs & warnings" },
-      { img:"https://picsum.photos/id/219/500/350", title:"Ticket System Pro", desc:"Support tickets" },
-      { img:"https://picsum.photos/id/169/500/350", title:"Giveaway Manager", desc:"Auto‑giveaways" }
-    ]},
-    "Graphics & GFX": { works: [
-      { img:"https://picsum.photos/id/104/500/350", title:"Neon Kingdom", desc:"Logo & identity pack" },
-      { img:"https://picsum.photos/id/21/500/350", title:"YT Thumbnail Pack", desc:"High CTR designs" }
-    ]},
-    "User Interface (UI)": { works: [
-      { img:"https://picsum.photos/id/91/500/350", title:"Cyberpunk HUD", desc:"Futuristic UI" },
-      { img:"https://picsum.photos/id/77/500/350", title:"Inventory System", desc:"Drag & drop" }
-    ]},
-    "Clothing": { works: [
-      { img:"https://picsum.photos/id/82/500/350", title:"Urban Streetwear", desc:"T-shirt design" },
-      { img:"https://picsum.photos/id/145/500/350", title:"Fantasy Hoodie", desc:"Embroidered look" }
-    ]},
-    "Modeling & Building": { works: [
-      { img:"https://picsum.photos/id/11/500/350", title:"Gothic Mansion", desc:"Interior & exterior" },
-      { img:"https://picsum.photos/id/33/500/350", title:"Neon City Plaza", desc:"Urban modular" }
-    ]}
-  };
+    // Portfolio database (same as used in services.html previews)
+    const portfolioDB = {
+        "Scripting": {
+            works: [
+                { img: "https://picsum.photos/id/26/500/350", title: "Admin Control Panel", desc: "Full moderation suite with logs" },
+                { img: "https://picsum.photos/id/106/500/350", title: "Economy Simulator", desc: "Trading & banking core" },
+                { img: "https://picsum.photos/id/0/500/350", title: "Anti-Cheat Core", desc: "Real-time protection AI" }
+            ]
+        },
+        "Discord Services": {
+            works: [
+                { img: "https://picsum.photos/id/96/500/350", title: "Moderation Dashboard", desc: "Logs & warnings" },
+                { img: "https://picsum.photos/id/219/500/350", title: "Ticket System Pro", desc: "Support tickets" },
+                { img: "https://picsum.photos/id/169/500/350", title: "Giveaway Manager", desc: "Auto‑giveaways" }
+            ]
+        },
+        "Graphics & GFX": {
+            works: [
+                { img: "https://picsum.photos/id/104/500/350", title: "Neon Kingdom", desc: "Logo & identity pack" },
+                { img: "https://picsum.photos/id/21/500/350", title: "YT Thumbnail Pack", desc: "High CTR designs" }
+            ]
+        },
+        "User Interface (UI)": {
+            works: [
+                { img: "https://picsum.photos/id/91/500/350", title: "Cyberpunk HUD", desc: "Futuristic UI" },
+                { img: "https://picsum.photos/id/77/500/350", title: "Inventory System", desc: "Drag & drop" }
+            ]
+        },
+        "Clothing": {
+            works: [
+                { img: "https://picsum.photos/id/82/500/350", title: "Urban Streetwear", desc: "T-shirt design" },
+                { img: "https://picsum.photos/id/145/500/350", title: "Fantasy Hoodie", desc: "Embroidered look" }
+            ]
+        },
+        "Modeling & Building": {
+            works: [
+                { img: "https://picsum.photos/id/11/500/350", title: "Gothic Mansion", desc: "Interior & exterior" },
+                { img: "https://picsum.photos/id/33/500/350", title: "Neon City Plaza", desc: "Urban modular" }
+            ]
+        }
+    };
 
-  let allProjects = [];
-  for (let cat in portfolioDB) {
-    portfolioDB[cat].works.forEach(w => { allProjects.push({ ...w, category: cat }); });
-  }
-
-  function renderProjects(filterCat = 'all') {
-    const grid = document.getElementById('projectsGrid');
-    const filtered = filterCat === 'all' ? allProjects : allProjects.filter(p => p.category === filterCat);
-    grid.innerHTML = '';
-    if (filtered.length === 0) {
-      grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:60px;">✨ No projects in this category yet.</div>';
-      return;
+    // Flatten all projects for "All" view
+    let allProjects = [];
+    for (let cat in portfolioDB) {
+        portfolioDB[cat].works.forEach(w => {
+            allProjects.push({ ...w, category: cat });
+        });
     }
-    filtered.forEach(proj => {
-      const card = document.createElement('div');
-      card.className = 'project-card';
-      card.innerHTML = `
-        <img class="project-img" src="${proj.img}" alt="${proj.title}" loading="lazy">
-        <div class="project-details">
-          <span class="project-cat">${proj.category}</span>
-          <div class="project-title">${proj.title}</div>
-          <div class="project-desc">${proj.desc}</div>
-          <a href="services.html" class="service-link">↗ related service · ${proj.category}</a>
-        </div>
-      `;
-      grid.appendChild(card);
-    });
-  }
 
-  function buildFilters() {
-    const bar = document.getElementById('filterBar');
-    const cats = Object.keys(portfolioDB);
-    bar.innerHTML = `<button class="filter-btn active" data-filter="all">All work</button>`;
-    cats.forEach(c => {
-      const btn = document.createElement('button');
-      btn.className = 'filter-btn';
-      btn.innerText = c;
-      btn.dataset.filter = c;
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        renderProjects(c);
-      });
-      bar.appendChild(btn);
-    });
-    const allBtn = bar.querySelector('[data-filter="all"]');
-    allBtn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      allBtn.classList.add('active');
-      renderProjects('all');
-    });
-    // URL parameter handling
-    const urlParams = new URLSearchParams(window.location.search);
-    const filterParam = urlParams.get('filter');
-    if (filterParam && cats.includes(filterParam)) {
-      const targetBtn = Array.from(bar.querySelectorAll('.filter-btn')).find(b => b.innerText === filterParam);
-      if (targetBtn) targetBtn.click();
-    } else {
-      renderProjects('all');
+    function renderProjects(filterCat = 'all') {
+        const grid = document.getElementById('projectsGrid');
+        const filtered = filterCat === 'all' ? allProjects : allProjects.filter(p => p.category === filterCat);
+        grid.innerHTML = '';
+        if (filtered.length === 0) {
+            grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:60px;">✨ No projects in this category yet. Check back soon!</div>';
+            return;
+        }
+        filtered.forEach(proj => {
+            const card = document.createElement('div');
+            card.className = 'project-card';
+            card.innerHTML = `
+                <img class="project-img" src="${proj.img}" alt="${proj.title}" loading="lazy">
+                <div class="project-details">
+                    <span class="project-cat">${proj.category}</span>
+                    <div class="project-title">${proj.title}</div>
+                    <div class="project-desc">${proj.desc}</div>
+                    <a href="services.html" class="service-link">↗ related service · ${proj.category}</a>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
     }
-  }
-  buildFilters();
+
+    function buildFilters() {
+        const bar = document.getElementById('filterBar');
+        const categories = Object.keys(portfolioDB);
+        bar.innerHTML = `<button class="filter-btn active" data-filter="all">All work</button>`;
+        categories.forEach(cat => {
+            const btn = document.createElement('button');
+            btn.className = 'filter-btn';
+            btn.innerText = cat;
+            btn.dataset.filter = cat;
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderProjects(cat);
+            });
+            bar.appendChild(btn);
+        });
+        const allBtn = bar.querySelector('[data-filter="all"]');
+        allBtn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            allBtn.classList.add('active');
+            renderProjects('all');
+        });
+
+        // URL parameter handling (coming from services.html clicks)
+        const urlParams = new URLSearchParams(window.location.search);
+        const filterParam = urlParams.get('filter');
+        if (filterParam && categories.includes(filterParam)) {
+            const targetBtn = Array.from(bar.querySelectorAll('.filter-btn')).find(b => b.innerText === filterParam);
+            if (targetBtn) targetBtn.click();
+        } else {
+            renderProjects('all');
+        }
+    }
+
+    buildFilters();
 </script>
 </body>
 </html>
